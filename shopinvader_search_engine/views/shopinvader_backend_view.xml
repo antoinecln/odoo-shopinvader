@@ -6,19 +6,27 @@
         <field name="inherit_id"
                ref="shopinvader.shopinvader_backend_view_form"/>
         <field name="arch" type="xml">
-<<<<<<< HEAD
-            <page name="search_eng" position="inside">
-                <field name="se_backend_id"/>
-            </page>
-            <page name="developper" position="inside">
-=======
             <group name="filter_ids" position="after">
-                <group name="filter_ids" colspan="4">
+                <group name="backend_id" colspan="4">
                     <field name="se_backend_id"/>
+                    <button
+                            name="add_misssing_index"
+                            string="Add missing index"
+                            type="object"/>
+                </group>
+                <group name="index_ids" colspan="4" string="Indexes">
+                    <field name="index_ids" nolabel="1" context="{'shopinvader_backend_id': active_id}">
+                        <tree colors="red:not is_valide" create="0" delete="0">
+                            <field name="name"/>
+                            <field name="lang_id"/>
+                            <field name="model_id"/>
+                            <field name="exporter_id"/>
+                            <field name="is_valide"/>
+                        </tree>
+                    </field>
                 </group>
             </group>
             <group name="category" position="after">
->>>>>>> WIP search_engine  reorganize view
                 <group name="indexes" string="Search engined indexes" col="10" colspan="4">
                     <button
                             name="force_recompute_all_binding_index"
@@ -33,7 +41,7 @@
                             string="Clear"
                             type="object"/>
                 </group>
-            </page>
+            </group>
         </field>
     </record>
 
